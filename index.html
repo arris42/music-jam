@@ -18,7 +18,8 @@
             color: white;
             min-height: 100%;
             background-color: #333;
-            box-shadow: 0px 0px 2rem #000 inset;
+            box-shadow: 0px 0px 3rem #000 inset;
+            transition: 700ms ease-out;
         }
 
         :root {
@@ -29,6 +30,13 @@
             --c4: 88, 196, 77;
             --c5: 178, 196, 77;
             --c6: 196, 124, 77;
+            --c0-dark: 112, 52, 50;
+            --c1-dark: 80, 48, 110;
+            --c2-dark: 47, 61, 110;
+            --c3-dark: 46, 108, 110;
+            --c4-dark: 52, 110, 46;
+            --c5-dark: 100, 110, 46;
+            --c6-dark: 105, 68, 44;
         }
 
         .container {
@@ -262,23 +270,65 @@
 
 
         // play sound
-        workit.addEventListener("click", () => {workit1.play(); });
-        doit.addEventListener("click", () => {doit1.play(); });
-        harder.addEventListener("click", () => {harder1.play(); });
-        faster.addEventListener("click", () => {faster1.play(); });
-        morethan.addEventListener("click", () => {morethan1.play(); });
-        our.addEventListener("click", () => {our1.play(); });
-        ever.addEventListener("click", () => {ever1.play(); });
-        workis.addEventListener("click", () => {workis1.play(); });
+        workit.addEventListener("click", () => {workit1.play();
+            transitionBtn("rgba(var(--c0-dark),1)", "700ms ease-out");
+    });
+        doit.addEventListener("click", () => {doit1.play();
+            transitionBtn("rgba(var(--c1-dark),1)", "700ms ease-out");
+    });
+        harder.addEventListener("click", () => {harder1.play();
+            transitionBtn("rgba(var(--c2-dark),1)", "700ms ease-out");
+    });
+        faster.addEventListener("click", () => {faster1.play();
+            transitionBtn("rgba(var(--c3-dark),1)", "700ms ease-out");
+    });
+        morethan.addEventListener("click", () => {morethan1.play();
+            transitionBtn("rgba(var(--c4-dark),1)", "700ms ease-out");
+    });
+        our.addEventListener("click", () => {our1.play();
+            transitionBtn("rgba(var(--c5-dark),1)", "700ms ease-out");
+    });
+        ever.addEventListener("click", () => {ever1.play();
+            transitionBtn("rgba(var(--c6-dark),1)", "700ms ease-out");
+    });
+        workis.addEventListener("click", () => {workis1.play();
+            transitionBtn("rgba(var(--c0-dark),1)", "700ms ease-out");
+    });
         
-        makeit.addEventListener("click", () => {makeit1.play(); });
-        makesus.addEventListener("click", () => {makesus1.play(); });
-        better.addEventListener("click", () => {better1.play(); });
-        stronger.addEventListener("click", () => {stronger1.play(); });
-        hour.addEventListener("click", () => {hour1.play(); });
-        never.addEventListener("click", () => {never1.play(); });
-        after.addEventListener("click", () => {after1.play(); });
-        over.addEventListener("click", () => {over1.play(); });
+        makeit.addEventListener("click", () => {makeit1.play();
+            transitionBtn("rgba(var(--c0-dark),1)", "700ms ease-out");
+    });
+        makesus.addEventListener("click", () => {makesus1.play();
+            transitionBtn("rgba(var(--c1-dark),1)", "700ms ease-out");
+    });
+        better.addEventListener("click", () => {better1.play();
+            transitionBtn("rgba(var(--c2-dark),1)", "700ms ease-out");
+    });
+        stronger.addEventListener("click", () => {stronger1.play();
+            transitionBtn("rgba(var(--c3-dark),1)", "700ms ease-out");
+    });
+        hour.addEventListener("click", () => {hour1.play();
+            transitionBtn("rgba(var(--c4-dark),1)", "700ms ease-out");
+    });
+        never.addEventListener("click", () => {never1.play();
+            transitionBtn("rgba(var(--c5-dark),1)", "700ms ease-out");
+    });
+        after.addEventListener("click", () => {after1.play();
+            transitionBtn("rgba(var(--c6-dark),1)", "700ms ease-out");
+    });
+        over.addEventListener("click", () => {over1.play();
+            transitionBtn("rgba(var(--c0-dark),1)", "700ms ease-out");
+    });
+
+
+        function transitionBtn(background, timeMs) {
+            document.body.style.transition = "0ms";
+            document.body.style.background = background;
+            setTimeout( () => {
+                    document.body.style.transition = timeMs;
+                    document.body.style.background = "";
+            },100);
+        }
 
     </script>
 </body>
