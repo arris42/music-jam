@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Music Jam</title>
+
+    <style type="text/css">
+        html {
+            height: 100%;
+        }
+        body {
+            font-family: "Open Sans", Arial;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            color: white;
+            min-height: 100%;
+            background-color: #333;
+            box-shadow: 0px 0px 2rem #000 inset;
+        }
+
+        :root {
+            --c0: 196, 79, 77;
+            --c1: 139, 77, 196;
+            --c2: 77, 103, 196;
+            --c3: 77, 193, 196;
+            --c4: 88, 196, 77;
+            --c5: 178, 196, 77;
+            --c6: 196, 124, 77;
+        }
+
+        .container {
+            width: fit-content;
+            margin: auto;
+            padding: 3rem;
+        }
+
+
+        .column {
+            display: flex;
+            flex-direction: column;
+            margin: 0 0.3rem;
+            justify-content: center;
+            align-items: center;
+            font-family: monospace;
+        }
+        .row {
+            display: flex;
+            flex-direction: row;
+            padding: 1rem 0;
+            justify-content: center;
+        }
+        
+        .btn {
+            display: none;
+            font-size: 1em;
+            padding: 0.8rem;
+            margin: 0.3rem;
+            cursor: pointer;
+            min-width: fit-content;
+            width: 20vw;
+            max-width: 10rem;
+            transition: 100ms ease-out;
+            -webkit-user-select: none; /* Safari */
+            -ms-user-select: none; /* IE 10 and IE 11 */
+            user-select: none; /* Standard syntax */
+        }
+        .btn:active {
+            transform: scale(0.92);
+        }
+
+        code {
+            background: #888;
+            padding: 0.2rem;
+            border-radius: 5px;
+        }
+
+
+        #workit {background-color: rgb(var(--c0)); }
+        #doit {background-color: rgb(var(--c1)); }
+        #harder {background-color: rgb(var(--c2)); }
+        #faster {background-color: rgb(var(--c3)); }
+        #morethan {background-color: rgb(var(--c4)); }
+        #our {background-color: rgb(var(--c5)); }
+        #ever {background-color: rgb(var(--c6)); }
+        #workis {background-color: rgb(var(--c0)); }
+
+        #makeit {background-color: rgb(var(--c0));}
+        #makesus {background-color: rgb(var(--c1));}
+        #better {background-color: rgb(var(--c2));}
+        #stronger {background-color: rgb(var(--c3));}
+        #hour {background-color: rgb(var(--c4));}
+        #never {background-color: rgb(var(--c5));}
+        #after {background-color: rgb(var(--c6));}
+        #over {background-color: rgb(var(--c0));}
+    </style>
+</head>
+<body>
+    <div class="container">
+        Volume (WARNING) : <input id="number" type="number" value="0.5" step=".1" max="5" placeholder="0.5" style="width:5rem;" /><br>(0.5 = half) (2 = double) (5 = 5x max)<br>
+        <small>To play more than 5x, run <code>changeVol(number)</code> in console</small>
+        <div class="row">
+            <h1 class="load">Loading...</h1>
+            <div class="column">
+                <div class="btn" id="workit">Work it</div>
+                <div class="btn" id="doit">Do it</div>
+                <div class="btn" id="harder">Harder</div>
+                <div class="btn" id="faster">Faster</div>
+                <div class="btn" id="morethan">More than</div>
+                <div class="btn" id="our">Our</div>
+                <div class="btn" id="ever">Ever</div>
+                <div class="btn" id="workis">Work is</div>
+            </div>
+            <div class="column">
+                <div class="btn" id="makeit">Make it</div>
+                <div class="btn" id="makesus">Makes us</div>
+                <div class="btn" id="better">Better</div>
+                <div class="btn" id="stronger">Stronger</div>
+                <div class="btn" id="hour">Hour</div>
+                <div class="btn" id="never">Never</div>
+                <div class="btn" id="after">After</div>
+                <div class="btn" id="over">Over</div>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript" src="sound.js"></script>
+    <script type="text/javascript">
+        sounds.load([
+            "jam/After1.flac",
+            "jam/Better1.flac",
+            "jam/DoIt1.flac",
+            "jam/Ever1.flac",
+            "jam/Faster1.flac",
+            "jam/Harder1.flac",
+            "jam/Hour1.flac",
+            "jam/MakeIt1.flac",
+            "jam/MakesUs1.flac",
+            "jam/MoreThan1.flac",
+            "jam/Never1.flac",
+            "jam/Our1.flac",
+            "jam/Over1.flac",
+            "jam/Stronger1.flac",
+            "jam/WorkIs1.flac",
+            "jam/WorkIt1.flac",
+        ]);
+
+
+        var after1 = sounds["jam/After1.flac"],
+            better1 = sounds["jam/Better1.flac"],
+            doit1 = sounds["jam/DoIt1.flac"],
+            ever1 = sounds["jam/Ever1.flac"],
+            faster1 = sounds["jam/Faster1.flac"],
+            harder1 = sounds["jam/Harder1.flac"],
+            hour1 = sounds["jam/Hour1.flac"],
+            makeit1 = sounds["jam/MakeIt1.flac"],
+            makesus1 = sounds["jam/MakesUs1.flac"],
+            morethan1 = sounds["jam/MoreThan1.flac"],
+            never1 = sounds["jam/Never1.flac"],
+            our1 = sounds["jam/Our1.flac"],
+            over1 = sounds["jam/Over1.flac"],
+            stronger1 = sounds["jam/Stronger1.flac"],
+            workis1 = sounds["jam/WorkIs1.flac"],
+            workit1 = sounds["jam/WorkIt1.flac"];
+
+
+        // get id
+        let workit = document.getElementById("workit");
+        let doit = document.getElementById("doit");
+        let harder = document.getElementById("harder");
+        let faster = document.getElementById("faster");
+        let morethan = document.getElementById("morethan");
+        let our = document.getElementById("our");
+        let ever = document.getElementById("ever");
+        let workis = document.getElementById("workis");
+
+        let makeit = document.getElementById("makeit");
+        let makesus = document.getElementById("makesus");
+        let better = document.getElementById("better");
+        let stronger = document.getElementById("stronger");
+        let hour = document.getElementById("hour");
+        let never = document.getElementById("never");
+        let after = document.getElementById("after");
+        let over = document.getElementById("over");
+
+
+        // btn transition
+        const buttons = document.querySelectorAll(".btn");
+        for (let i = 0; i < buttons.length; i++) {
+            buttons[i].addEventListener("click", () => {
+                buttons[i].style.background = "rgba(255,255,255,0.8)";
+                setTimeout( () => {buttons[i].style.background = "";},100);
+            });
+        }
+
+
+        // vol change
+        let numberVol = document.getElementById('number');
+        numberVol.addEventListener("input", (event) => {
+            let targetVol = numberVol.value;
+            if (targetVol>5) {numberVol.value=5} else if (targetVol == 0) {targetVol=0.5}
+
+            after1.volume = targetVol;
+            better1.volume = targetVol;
+            doit1.volume = targetVol;
+            ever1.volume = targetVol;
+            faster1.volume = targetVol;
+            harder1.volume = targetVol;
+            hour1.volume = targetVol;
+            makeit1.volume = targetVol;
+            makesus1.volume = targetVol;
+            morethan1.volume = targetVol;
+            never1.volume = targetVol;
+            our1.volume = targetVol;
+            over1.volume = targetVol;
+            stronger1.volume = targetVol;
+            workis1.volume = targetVol;
+            workit1.volume = targetVol;
+        });
+
+        function changeVol(volumeDecimal, damageWARNING) {
+            if (!Math.floor(volumeDecimal)) {console.log("NaN");return;}
+
+            after1.volume = volumeDecimal;
+            better1.volume = volumeDecimal;
+            doit1.volume = volumeDecimal;
+            ever1.volume = volumeDecimal;
+            faster1.volume = volumeDecimal;
+            harder1.volume = volumeDecimal;
+            hour1.volume = volumeDecimal;
+            makeit1.volume = volumeDecimal;
+            makesus1.volume = volumeDecimal;
+            morethan1.volume = volumeDecimal;
+            never1.volume = volumeDecimal;
+            our1.volume = volumeDecimal;
+            over1.volume = volumeDecimal;
+            stronger1.volume = volumeDecimal;
+            workis1.volume = volumeDecimal;
+            workit1.volume = volumeDecimal;
+
+            console.log("Set volume to "+volumeDecimal+"x");
+            console.log("TURN DOWN UR VOLUME 1ST!! U'VE BEAN WARNED");
+            if (volumeDecimal>15) {
+                console.log("WARRANTY OFF EAAR DAAMAGE IS NOD INCLUDED HERE");
+                alert("This will broke your ear, or even your speakers.. THIS IS NASTY ALERT!");
+            }
+        }
+
+
+
+        // load sound when ready
+        sounds.whenLoaded = setup;
+
+        function setup() {
+            for (let i = 0; i < buttons.length; i++) {
+                buttons[i].style.display = "block";
+            }
+            document.querySelector('.load').style.display = "none";
+        }
+
+
+        // play sound
+        workit.addEventListener("click", () => {workit1.play(); });
+        doit.addEventListener("click", () => {doit1.play(); });
+        harder.addEventListener("click", () => {harder1.play(); });
+        faster.addEventListener("click", () => {faster1.play(); });
+        morethan.addEventListener("click", () => {morethan1.play(); });
+        our.addEventListener("click", () => {our1.play(); });
+        ever.addEventListener("click", () => {ever1.play(); });
+        workis.addEventListener("click", () => {workis1.play(); });
+        
+        makeit.addEventListener("click", () => {makeit1.play(); });
+        makesus.addEventListener("click", () => {makesus1.play(); });
+        better.addEventListener("click", () => {better1.play(); });
+        stronger.addEventListener("click", () => {stronger1.play(); });
+        hour.addEventListener("click", () => {hour1.play(); });
+        never.addEventListener("click", () => {never1.play(); });
+        after.addEventListener("click", () => {after1.play(); });
+        over.addEventListener("click", () => {over1.play(); });
+
+    </script>
+</body>
+</html>
