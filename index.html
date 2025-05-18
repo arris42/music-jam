@@ -249,10 +249,13 @@
             workit1.volume = volumeDecimal;
 
             console.log("Set volume to "+volumeDecimal+"x");
-            console.log("TURN DOWN UR VOLUME 1ST!! U'VE BEAN WARNED");
+            console.log("TURN DOWN UR VOLUME 1ST!! U'VE BEEN WARNED");
             if (volumeDecimal>15) {
                 console.log("WARRANTY OFF EAAR DAAMAGE IS NOD INCLUDED HERE");
                 alert("This will broke your ear, or even your speakers.. THIS IS NASTY ALERT!");
+                if (_verif==true) {
+                    alert("Let's be real : Turn down your volume first lol, We don't give a shit about how much you increase the volume")
+                }
             }
         }
 
